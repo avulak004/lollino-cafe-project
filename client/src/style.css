@@ -1,0 +1,844 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: #fbf6ef;
+  color: #3b241b;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 18px;
+  background: #5b3524;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #e3d2c1;
+  border-radius: 14px;
+  background: white;
+  color: #3b241b;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 18px 6%;
+  background: #43291f;
+  color: white;
+}
+
+header > div {
+  margin-right: auto;
+}
+
+header b {
+  display: block;
+  font-size: 20px;
+}
+
+header small {
+  display: block;
+  margin-top: 3px;
+  opacity: .8;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 36px 0 70px;
+}
+
+.hero {
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  padding: 70px;
+  border-radius: 0;
+  background:
+    linear-gradient(rgba(45, 23, 16, 0.72), rgba(45, 23, 16, 0.72)),
+    url("/images/cafe-background.jpg") center / cover no-repeat;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.hero-copy {
+  max-width: 650px;
+}
+.hero-copy p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero-tag {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  margin: 16px 0;
+  font-size: clamp(50px, 8vw, 82px);
+  line-height: .95;
+  letter-spacing: -3px;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #000000;
+  font-weight: 500;
+  max-width: 650px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #eadbcb;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(72, 43, 28, .07);
+}
+
+.card form {
+  display: grid;
+  gap: 12px;
+}
+
+.narrow {
+  max-width: 520px;
+  margin: 50px auto;
+}
+
+.toprow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+
+.filters input {
+  width: 290px;
+  margin-right: auto;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.item {
+  padding: 0;
+  overflow: hidden;
+  min-height: 260px;
+  position: relative;
+}
+
+.item::before {
+  content: "☕";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  font-size: 54px;
+  background: linear-gradient(135deg, #ead1b5, #f5e4d2);
+}
+
+.item > div {
+  padding: 20px 24px 24px;
+}
+
+.item > button {
+  position: absolute;
+  right: 20px;
+  top: 128px;
+}
+
+.item h3 {
+  margin: 10px 0 6px;
+  font-size: 21px;
+}
+
+.item p {
+  min-height: 40px;
+  color: #7a6457;
+}
+
+.pill {
+  display: inline-block;
+  padding: 5px 9px;
+  margin-right: 7px;
+  border-radius: 999px;
+  background: #e8f3e7;
+  color: #3c6840;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.best {
+  background: #fff0c9;
+  color: #7a5a14;
+}
+
+.cart {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  background: #43291f;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,.2);
+  z-index: 20;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 28, 21, .55);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 50;
+}
+
+.customize-card {
+  width: min(700px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.modifier-group {
+  margin-top: 22px;
+}
+
+.modifier-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.required {
+  color: #c33;
+  font-size: 13px;
+}
+
+.modifier-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.option {
+  background: #f4e8dc;
+  color: #43291f;
+}
+
+.option.active {
+  background: #5b3524;
+  color: white;
+}
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.column {
+  background: #f2e9df;
+  border-radius: 20px;
+  padding: 15px;
+  min-height: 350px;
+}
+
+.order {
+  margin-top: 12px;
+}
+
+.order small {
+  display: block;
+  margin-top: 5px;
+  color: #7a6457;
+}
+
+.list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: #c33;
+}
+
+.hint {
+  color: #80695b;
+  font-size: 14px;
+}
+
+/* Correct visuals based on item name */
+.item[data-name="Espresso"]::before,
+.item[data-name="Americano"]::before,
+.item[data-name="Cappuccino"]::before,
+.item[data-name="Latte"]::before,
+.item[data-name="South Indian Filter Coffee"]::before,
+.item[data-name="Caramel Macchiato"]::before {
+  content: "☕";
+}
+
+.item[data-name="Mocha"]::before,
+.item[data-name="Hot Chocolate"]::before,
+.item[data-name="Brownie"]::before {
+  content: "🍫";
+}
+
+.item[data-name="Cold Brew"]::before,
+.item[data-name="Iced Tea"]::before {
+  content: "🧊";
+}
+
+.item[data-name="Iced Latte"]::before {
+  content: "🧋";
+}
+
+.item[data-name="Masala Chai"]::before,
+.item[data-name="Green Tea"]::before {
+  content: "🍵";
+}
+
+.item[data-name="Fresh Lime Soda"]::before {
+  content: "🍋";
+}
+
+.item[data-name="Mango Smoothie"]::before {
+  content: "🥭";
+}
+
+.item[data-name="Milkshake"]::before,
+.item[data-name="Cold Coffee Frappe"]::before {
+  content: "🥤";
+}
+
+.item[data-name="Fresh Juice"]::before {
+  content: "🧃";
+}
+
+.item[data-name="Veg Sandwich"]::before,
+.item[data-name="Grilled Cheese Sandwich"]::before {
+  content: "🥪";
+}
+
+.item[data-name="Paneer Wrap"]::before {
+  content: "🌯";
+}
+
+.item[data-name="Veg Puff"]::before,
+.item[data-name="Croissant"]::before {
+  content: "🥐";
+}
+
+.item[data-name="Samosa"]::before {
+  content: "🥟";
+}
+
+.item[data-name="French Fries"]::before {
+  content: "🍟";
+}
+
+.item[data-name="Garlic Bread"]::before {
+  content: "🥖";
+}
+
+.item[data-name="Pasta"]::before {
+  content: "🍝";
+}
+
+.item[data-name="Cheesecake"]::before {
+  content: "🍰";
+}
+
+.item[data-name="Muffin"]::before {
+  content: "🧁";
+}
+
+@media (max-width: 700px) {
+  header {
+    gap: 16px;
+    padding: 16px 4%;
+  }
+
+  header a {
+    display: none;
+  }
+
+  main {
+    width: 94%;
+    padding-top: 22px;
+  }
+
+  .hero {
+    min-height: 300px;
+    padding: 30px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+  }
+  .hero h1 em {
+  color: #c86b3f;
+  font-style: italic;
+}
+
+  .grid2,
+  .menu,
+  .kanban {
+    grid-template-columns: 1fr;
+  }
+
+  .filters input {
+    width: 100%;
+  }
+}
+.item[data-name="Espresso"]::before {
+  content: "";
+  background-image: url("/images/espresso.jpg");
+  background-size: cover;
+  background-position: center;
+  font-size: 0;
+}
+/* ===== LOLLINO 4-COLUMN MENU ===== */
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.menu .item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 390px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  position: relative;
+}
+
+/* Product image area */
+.menu .item::before {
+  content: "";
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 190px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #ead1b5, #f5e4d2);
+}
+
+/* Product information */
+.menu .item > div {
+  padding: 18px 18px 8px;
+}
+
+/* Product name */
+.menu .item h3 {
+  margin: 10px 0 6px;
+  font-size: 20px;
+}
+
+/* Description */
+.menu .item p {
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+/* Price */
+.menu .item b {
+  font-size: 17px;
+}
+
+/* Customize button */
+.menu .item > button {
+  position: static;
+  align-self: flex-end;
+  margin: 4px 18px 18px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* Keep cards readable on smaller screens */
+@media (max-width: 1100px) {
+  .menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .menu {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== PRODUCT PHOTOS ===== */
+
+.menu .item[data-name="Espresso"]::before {
+  content: "";
+  background-image: url("/images/espresso.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Americano"]::before {
+  content: "";
+  background-image: url("/images/americano.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Cappuccino"]::before {
+  content: "";
+  background-image: url("/images/cappuccino.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Latte"]::before {
+  content: "";
+  background-image: url("/images/latte.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+/* ===== PRODUCT PHOTOS ===== */
+
+.menu .item[data-name="Espresso"]::before {
+  content: "";
+  background-image: url("/images/espresso.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Americano"]::before {
+  content: "";
+  background-image: url("/images/americano.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Cappuccino"]::before {
+  content: "";
+  background-image: url("/images/cappuccino.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Latte"]::before {
+  content: "";
+  background-image: url("/images/latte.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+/* ===== REMAINING PRODUCT PHOTOS ===== */
+
+.menu .item[data-name="Mocha"]::before {
+  content: "";
+  background-image: url("/images/mocha.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="South Indian Filter Coffee"]::before {
+  content: "";
+  background-image: url("/images/south indian filter coffee.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Cold Brew"]::before {
+  content: "";
+  background-image: url("/images/cold brew.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Masala Chai"]::before {
+  content: "";
+  background-image: url("/images/masala chai.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Hot Chocolate"]::before {
+  content: "";
+  background-image: url("/images/hot chocolate.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Green Tea"]::before {
+  content: "";
+  background-image: url("/images/green tea.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Fresh Lime Soda"]::before {
+  content: "";
+  background-image: url("/images/fresh lime soda.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Mango Smoothie"]::before {
+  content: "";
+  background-image: url("/images/mango smoothie.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}/* ===== MORE PRODUCT PHOTOS ===== */
+
+.menu .item[data-name="Veg Sandwich"]::before {
+  content: "";
+  background-image: url("/images/veg sandwich.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Paneer Wrap"]::before {
+  content: "";
+  background-image: url("/images/paneer wrap.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Samosa"]::before {
+  content: "";
+  background-image: url("/images/samosa.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="French Fries"]::before {
+  content: "";
+  background-image: url("/images/french fries.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Garlic Bread"]::before {
+  content: "";
+  background-image: url("/images/garlic bread.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Pasta"]::before {
+  content: "";
+  background-image: url("/images/pasta.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Brownie"]::before {
+  content: "";
+  background-image: url("/images/brownie.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="Cheesecake"]::before {
+  content: "";
+  background-image: url("/images/cheesecake.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+.menu .item[data-name="cold coffee"]::before {
+  content: "";
+  background-image: url("/images/cold coffee.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+/* Product images */
+.item::before {
+  display: none;
+}
+
+.item {
+  padding: 0;
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-photo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Product information area */
+.item > div {
+  padding: 16px 18px;
+}
+
+/* Keep the customize button neat */
+.item > button {
+  margin: 0 18px 18px auto;
+}.table-select {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.table-select button {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-main b {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+
+  .brand-logo {
+  width: 68px;
+  height: 68px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.brand small {
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  font-weight: 600;
+  opacity: 0.85;
+}
